@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Beaker,
@@ -38,7 +39,11 @@ import {
   Dribbble,
   ChevronRight,
   Sparkle,
-  Target
+  Target,
+  Instagram,
+  Youtube,
+  Linkedin,
+  MessageCircle
 } from "lucide-react";
 import { SCHOOL_DATA } from "@/lib/schoolData";
 
@@ -222,7 +227,7 @@ export default function MiraiSchoolWebsite() {
       </div>
 
       {/* SECTION 1: HERO */}
-      <section id="hero" className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 overflow-hidden bg-cover bg-center">
+      <section id="hero" className="relative min-h-[95vh] lg:min-h-screen flex flex-col justify-between pt-20 sm:pt-24 pb-8 overflow-hidden bg-cover bg-center">
         {/* Ambient Luxurious Backdrop Representation */}
         <div className="absolute inset-0 z-0 bg-[#F4EFEA]">
           {/* Simulated Premium background patterns */}
@@ -237,43 +242,74 @@ export default function MiraiSchoolWebsite() {
         </div>
 
         {/* Hero Interactive Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center">
-          <div className="max-w-4xl">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#77966D] font-bold block mb-4">
-              ✨ GURUGRAM NCR, INDIA
-            </span>
-            <h1 className="font-serif font-black text-4xl sm:text-6xl md:text-7xl text-[#AA4A44] leading-[1.05] tracking-tight mb-6">
-              {SCHOOL_DATA.tagline}
-            </h1>
-            <p className="font-sans text-lg sm:text-2xl text-[#2B2927]/90 max-w-2xl leading-relaxed mb-8">
-              {SCHOOL_DATA.subheading}
-            </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex items-center py-4 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#77966D] font-bold block mb-4">
+                ✨ GURUGRAM NCR, INDIA
+              </span>
+              <h1 className="font-serif font-black text-4xl sm:text-5xl md:text-6xl text-[#AA4A44] leading-[1.1] tracking-tight mb-6">
+                {SCHOOL_DATA.tagline}
+              </h1>
+              <p className="font-sans text-base sm:text-xl text-[#2B2927]/90 max-w-2xl leading-relaxed mb-8">
+                {SCHOOL_DATA.subheading}
+              </p>
 
-            <div className="flex flex-wrap gap-4">
-              <button 
-                onClick={() => {
-                  scrollToSection("cta-block");
-                  const tourTab = document.getElementById("tab-tour");
-                  if (tourTab) tourTab.click();
-                }}
-                className="px-8 py-4 bg-[#AA4A44] text-white hover:bg-[#AA4A44]/95 transition rounded-full font-semibold uppercase tracking-wider text-xs flex items-center space-x-2"
-                id="hero-book-tour-btn"
-              >
-                <span>Book Campus Tour</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => {
-                  scrollToSection("cta-block");
-                  const prosTab = document.getElementById("tab-prospectus");
-                  if (prosTab) prosTab.click();
-                }}
-                className="px-8 py-4 border-2 border-[#AA4A44] text-[#AA4A44] bg-[#FAF7F2]/80 hover:bg-[#AA4A44]/10 transition rounded-full font-semibold uppercase tracking-wider text-xs flex items-center space-x-2"
-                id="hero-download-pros-btn"
-              >
-                <span>Download Prospectus</span>
-                <FileText className="w-4 h-4" />
-              </button>
+              <div className="flex flex-wrap gap-4">
+                <button 
+                  onClick={() => {
+                    scrollToSection("cta-block");
+                    const tourTab = document.getElementById("tab-tour");
+                    if (tourTab) tourTab.click();
+                  }}
+                  className="px-8 py-4 bg-[#AA4A44] text-white hover:bg-[#AA4A44]/95 transition rounded-full font-semibold uppercase tracking-wider text-xs flex items-center space-x-2"
+                  id="hero-book-tour-btn"
+                >
+                  <span>Book Campus Tour</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => {
+                    scrollToSection("cta-block");
+                    const prosTab = document.getElementById("tab-prospectus");
+                    if (prosTab) prosTab.click();
+                  }}
+                  className="px-8 py-4 border-2 border-[#AA4A44] text-[#AA4A44] bg-[#FAF7F2]/80 hover:bg-[#AA4A44]/10 transition rounded-full font-semibold uppercase tracking-wider text-xs flex items-center space-x-2"
+                  id="hero-download-pros-btn"
+                >
+                  <span>Download Prospectus</span>
+                  <FileText className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Image/Visual Column */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div id="hero-image-wrapper" className="relative w-full max-w-[460px] aspect-[4/3] sm:aspect-square md:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden border-4 border-white shadow-2xl group bg-[#FAF7F2]">
+                <Image 
+                  src="https://picsum.photos/seed/miraischool/800/1000"
+                  alt="Mirai Experiential School Campus & Interaction"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                  referrerPolicy="no-referrer"
+                />
+                {/* Decorative overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2B2927]/30 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Floating badge */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#FAF7F2]/95 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg flex items-center space-x-3 transition duration-300 group-hover:translate-y-[-4px]">
+                  <div className="p-2.5 bg-[#AA4A44]/10 rounded-xl flex items-center justify-center text-[#AA4A44]">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-bold">Experiential Learning</span>
+                    <span className="block font-serif font-bold text-xs text-[#2B2927]">Shaping Tomorrow&apos;s Pioneers</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1570,6 +1606,47 @@ export default function MiraiSchoolWebsite() {
             <p className="text-xs text-[#FAF7F2]/60 leading-relaxed mb-6">
               NCR&apos;s benchmark IB school mapping academic inquiry directly against hands-on robotic capstones, heated ozone aquatic systems, and elite university portfolio channels.
             </p>
+            <div className="mb-3 text-xs font-mono uppercase tracking-wider text-[#AA4A44] font-bold">
+              Follow Us
+            </div>
+            <div className="flex items-center space-x-4">
+              <a 
+                href="https://www.instagram.com/miraiexp/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:scale-110 transition-transform duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-[#AA4A44]" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@mirai_exp" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:scale-110 transition-transform duration-200"
+                aria-label="Youtube"
+              >
+                <Youtube className="w-5 h-5 text-[#AA4A44]" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/mirai-experiential-school" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:scale-110 transition-transform duration-200"
+                aria-label="Linkedin"
+              >
+                <Linkedin className="w-5 h-5 text-[#AA4A44]" />
+              </a>
+              <a 
+                href="https://wa.me/919220522282" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:scale-110 transition-transform duration-200"
+                aria-label="Whatsapp"
+              >
+                <MessageCircle className="w-5 h-5 text-[#AA4A44]" />
+              </a>
+            </div>
           </div>
 
           <div>
