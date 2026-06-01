@@ -47,9 +47,169 @@ import {
 } from "lucide-react";
 import { SCHOOL_DATA } from "@/lib/schoolData";
 
+const BENTO_BLOCKS = [
+  {
+    id: "classrooms",
+    title: "Spaces Designed For Curiosity",
+    category: "WORLD-CLASS CLASSROOMS",
+    benefit: "Bright, collaborative classrooms that inspire inquiry, creativity, and meaningful learning.",
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Interactive learning zones",
+      "Technology-enabled teaching",
+      "Small-group collaboration",
+      "Student-centered environments"
+    ],
+    className: "lg:col-span-8 md:col-span-12"
+  },
+  {
+    id: "educators",
+    title: "Teachers Who Inspire Excellence",
+    category: "EXPERT IB EDUCATORS",
+    benefit: "Highly qualified educators who guide every child with care, expertise, and global perspectives.",
+    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "IB-trained faculty",
+      "Continuous professional development",
+      "Low teacher-student ratio",
+      "Individual attention",
+      "Mentorship culture"
+    ],
+    className: "lg:col-span-4 md:col-span-6"
+  },
+  {
+    id: "labs",
+    title: "Learning Beyond Textbooks",
+    category: "SCIENCE & INNOVATION LABS",
+    benefit: "Hands-on exploration through cutting-edge laboratories and innovation spaces.",
+    image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Science Labs",
+      "STEM Labs",
+      "Maker Spaces",
+      "Robotics",
+      "Research Projects",
+      "Experiment-based learning"
+    ],
+    className: "lg:col-span-4 md:col-span-6"
+  },
+  {
+    id: "sports",
+    title: "Building Champions On And Off The Field",
+    category: "SPORTS & ATHLETICS",
+    benefit: "Professional sports facilities that develop teamwork, resilience, and confidence.",
+    image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Football",
+      "Basketball",
+      "Cricket",
+      "Tennis",
+      "Athletics",
+      "Fitness",
+      "Indoor sports"
+    ],
+    className: "lg:col-span-8 md:col-span-12"
+  },
+  {
+    id: "arts",
+    title: "Where Creativity Finds Expression",
+    category: "ARTS & CREATIVITY",
+    benefit: "A vibrant environment that nurtures imagination, artistic talent, and confidence.",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Visual Arts",
+      "Music",
+      "Drama",
+      "Dance",
+      "Design",
+      "Photography",
+      "Creative expression"
+    ],
+    className: "lg:col-span-4 md:col-span-6"
+  },
+  {
+    id: "boarding",
+    title: "A Home Away From Home",
+    category: "SAFE & NURTURING BOARDING",
+    benefit: "Safe, comfortable, and nurturing boarding designed for growth and independence.",
+    image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "24x7 supervision",
+      "Pastoral care",
+      "House parents",
+      "Wellness support",
+      "Structured routines",
+      "Life skills development"
+    ],
+    className: "lg:col-span-4 md:col-span-6"
+  },
+  {
+    id: "meals",
+    title: "Healthy Bodies. Healthy Minds.",
+    category: "NUTRITIOUS MEALS",
+    benefit: "Fresh, balanced meals carefully planned to support student health and wellbeing.",
+    image: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Nutrition-focused menu",
+      "Hygienic kitchens",
+      "Balanced diet",
+      "Variety of cuisines",
+      "Special dietary requirements"
+    ],
+    className: "lg:col-span-4 md:col-span-12"
+  },
+  {
+    id: "safety",
+    title: "Because Nothing Matters More Than Safety",
+    category: "SAFETY & SECURITY",
+    benefit: "Comprehensive systems designed to ensure a secure and supportive environment.",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "CCTV monitoring",
+      "Secure campus",
+      "Medical support",
+      "Emergency protocols",
+      "Transport safety",
+      "Student wellbeing systems"
+    ],
+    className: "lg:col-span-7 md:col-span-6"
+  },
+  {
+    id: "green",
+    title: "A Campus That Inspires Exploration",
+    category: "GREEN CAMPUS",
+    benefit: "Beautiful outdoor environments that encourage movement, curiosity, and wellbeing.",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Landscaped spaces",
+      "Outdoor learning",
+      "Environmental awareness",
+      "Connection with nature"
+    ],
+    className: "lg:col-span-5 md:col-span-6"
+  },
+  {
+    id: "holistic",
+    title: "Preparing Children For Life",
+    category: "HOLISTIC DEVELOPMENT",
+    benefit: "A balanced education that develops academics, character, leadership, and confidence.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200",
+    bullets: [
+      "Leadership",
+      "Communication",
+      "Critical thinking",
+      "Creativity",
+      "Collaboration",
+      "Emotional intelligence"
+    ],
+    className: "lg:col-span-12 md:col-span-12"
+  }
+];
+
 export default function MiraiSchoolWebsite() {
   // Navigation & UI States
-  const [activeTab, setActiveTab] = useState<"eyp" | "pyp" | "myp" | "dp">("eyp");
+  const [expandedTile, setExpandedTile] = useState<number | null>(null);
+  const [activeTab, setActiveTab ] = useState<"eyp" | "pyp" | "myp" | "dp">("eyp");
   const [selectedProject, setSelectedProject] = useState(SCHOOL_DATA.studentProjects[0].id);
   const [selectedFridLocation, setSelectedFridLocation] = useState(0);
   const [selectedEnv, setSelectedEnv] = useState(SCHOOL_DATA.learningEnvironments[0].id);
@@ -93,6 +253,16 @@ export default function MiraiSchoolWebsite() {
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleCtaClick = (tabId: "tab-tour" | "tab-prospectus" | "tab-callback") => {
+    scrollToSection("cta-block");
+    setTimeout(() => {
+      const tabElement = document.getElementById(tabId);
+      if (tabElement) {
+        (tabElement as HTMLButtonElement).click();
+      }
+    }, 400);
   };
 
   // Scroll active section highlighting (optional helper)
@@ -341,42 +511,225 @@ export default function MiraiSchoolWebsite() {
         </div>
       </section>
 
-      {/* SECTION 2: WHY PARENTS CHOOSE MIRAI */}
-      <section id="why-choose-us" className="py-24 bg-[#FCFAF7] border-t border-[#E7E7E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-16">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#77966D] font-bold block mb-2">EDUCATIONAL BENCHMARK</span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-[#AA4A44] leading-tight">
-              Why Discerning Parents Select Mirai
+      {/* SECTION 2: WHY PARENTS CHOOSE MIRAI EXPERIENTIAL SCHOOL */}
+      <section id="why-choose-us" className="py-24 bg-[#FCFAF7] border-t border-[#E7E7E7] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Main Title & Subtitle */}
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#77966D] font-bold block mb-4">
+              WHY PARENTS CHOOSE MIRAI EXPERIENTIAL SCHOOL
+            </span>
+            <h2 className="font-serif font-black text-4xl sm:text-5xl text-[#AA4A44] leading-[1.1] tracking-tight mb-6">
+              Why Parents Choose<br />Mirai Experiential School
             </h2>
-            <div className="w-20 h-1 bg-[#C99996] mt-4" />
+            <p className="font-sans text-base sm:text-lg text-[#2B2927]/80 max-w-2xl mx-auto leading-relaxed">
+              A school is more than academics. It&apos;s the environment where children learn, grow, explore, create, and discover who they become.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SCHOOL_DATA.whyChooseUs.map((card, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#FAF7F2] p-8 rounded-2xl border border-[#E7E7E7] hover:border-[#AA4A44]/30 shadow-sm transition duration-300 flex flex-col justify-between group"
+          {/* Premium Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-20">
+            {BENTO_BLOCKS.map((block, idx) => (
+              <div
+                key={block.id}
+                onClick={() => setExpandedTile(idx)}
+                className={`group relative overflow-hidden rounded-[2.5rem] border border-[#E7E7E7]/60 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer aspect-[16/10] sm:aspect-video lg:aspect-auto lg:h-[400px] bg-[#FAF7F2] ${block.className}`}
               >
-                <div>
-                  <div className="text-xs font-mono font-bold text-[#77966D] mb-4">
-                    0{idx + 1}
-                  </div>
-                  <h3 className="font-serif font-bold text-xl text-[#AA4A44] mb-3 group-hover:text-[#AA4A44]/85 transition">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-[#2B2927]/80 leading-relaxed">
-                    {card.description}
-                  </p>
+                {/* Background Image using Next.js Image component */}
+                <div className="absolute inset-0 w-full h-full scale-100 group-hover:scale-105 transition-transform duration-700 ease-out">
+                  <Image
+                    src={block.image}
+                    alt={block.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+                    className="object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Subtle dark layout shading for extreme premium typography readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/5" />
                 </div>
-                <div className="mt-8 pt-4 border-t border-[#E7E7E7]/50 flex justify-between items-center text-xs font-mono text-[#77966D]">
-                  <span>MIRAI STANDARD</span>
-                  <Sparkle className="w-3.5 h-3.5 text-[#AA4A44]" />
+
+                {/* Content Overlay */}
+                <div className="absolute inset-0 p-8 sm:p-10 flex flex-col justify-between z-10">
+                  {/* Top content row */}
+                  <div className="flex justify-between items-start">
+                    <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest text-[#FAF7F2]/75 font-semibold bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
+                      {block.category}
+                    </span>
+                    <span className="text-[#FAF7F2]/60 font-mono text-xs sm:text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {"// 0" + (idx + 1)}
+                    </span>
+                  </div>
+
+                  {/* Bottom content block */}
+                  <div className="mt-auto">
+                    <h3 className="font-serif font-bold text-xl sm:text-2xl md:text-3xl text-white leading-snug mb-2 group-hover:text-white/90 transition-colors">
+                      {block.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#FAF7F2]/80 leading-relaxed max-w-xl group-hover:text-white transition duration-300 mb-4 font-sans line-clamp-2">
+                      {block.benefit}
+                    </p>
+                    
+                    {/* Link Trigger */}
+                    <div className="flex items-center space-x-2 text-[#C99996] font-mono text-[10px] uppercase tracking-wider font-bold group-hover:text-white transition-colors duration-300">
+                      <span>Click to discover room details</span>
+                      <ArrowRight className="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* BOTTOM TRUST BAR */}
+          <div className="border-y border-[#E7E7E7] py-6 mb-16 bg-[#FAF7F2]/50 rounded-2xl md:rounded-full px-6">
+            <div className="grid grid-cols-2 md:grid-flow-col gap-4 text-center items-center justify-center font-serif text-[#AA4A44] font-bold text-sm sm:text-base division-bar divide-[#C99996]/30">
+              <div className="px-4">500+ Future Leaders</div>
+              <div className="px-4 border-l border-[#C99996]/30">World-Class Faculty</div>
+              <div className="px-4 border-l border-[#C99996]/30">IB Curriculum</div>
+              <div className="px-5 md:block hidden border-l border-[#C99996]/30">Future-Ready Learning</div>
+              <div className="px-4 border-l border-[#C99996]/30 sm:block hidden font-serif font-bold">Safe Campus</div>
+              <div className="px-4 border-l border-[#C99996]/30 lg:block hidden text-xs font-mono uppercase text-[#77966D] tracking-wider font-bold border-l border-[#C99996]/30">
+                Day School | Day Boarding | Full Boarding
+              </div>
+            </div>
+            {/* Mobile fallbacks */}
+            <div className="lg:hidden text-center mt-3 font-mono text-[10px] uppercase text-[#77966D] tracking-widest font-bold">
+              Day School | Day Boarding | Full Boarding
+            </div>
+          </div>
+
+          {/* CTA SECTION */}
+          <div className="bg-[#FAF7F2] border border-[#E7E7E7] rounded-[2.5rem] p-8 sm:p-12 md:p-16 text-center shadow-lg relative overflow-hidden">
+            {/* Luxury decorative geometric grid background */}
+            <div className="absolute inset-0 bg-[radial-gradient(#AA4A44_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03] pointer-events-none" />
+            
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-4">
+                VISIT THE MIRAI ECOSYSTEM
+              </span>
+              <h3 className="font-serif font-black text-3xl sm:text-5xl text-[#AA4A44] leading-tight mb-6">
+                Come Experience Mirai For Yourself
+              </h3>
+              <p className="text-sm sm:text-base text-[#2B2927]/85 max-w-lg mx-auto leading-relaxed mb-10">
+                Witness our unique 4+1 Learning Model, engage with internationally certified IB mentors, and view our world-class safety & recreation infrastructure.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button
+                  onClick={() => handleCtaClick("tab-tour")}
+                  className="w-full sm:w-auto px-8 py-4 bg-[#AA4A44] hover:bg-[#AA4A44]/95 text-white transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
+                >
+                  <span>Schedule A Campus Tour</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleCtaClick("tab-callback")}
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#AA4A44] hover:bg-[#AA4A44]/5 text-[#AA4A44] bg-transparent transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
+                >
+                  <span>Request A Callback</span>
+                  <Phone className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleCtaClick("tab-prospectus")}
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#77966D] hover:bg-[#77966D]/5 text-[#77966D] bg-transparent transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
+                >
+                  <span>Download Prospectus</span>
+                  <FileText className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* Dynamic Expanded Content Dialog Overlay (Click to Expand Block) */}
+        <AnimatePresence>
+          {expandedTile !== null && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+              onClick={() => setExpandedTile(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, y: 20, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.95, y: 20, opacity: 0 }}
+                transition={{ type: "spring", duration: 0.5 }}
+                className="relative w-full max-w-2xl bg-[#FCFAF7] rounded-[2rem] overflow-hidden shadow-2xl border border-[#E7E7E7]/50 p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 text-[#2B2927]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => setExpandedTile(null)}
+                  className="absolute top-4 right-4 p-2 bg-white/85 hover:bg-white rounded-full text-[#AA4A44] transition shadow-md z-10"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Modal Left/Image */}
+                <div className="w-full md:w-1/2 relative aspect-video md:aspect-[3/4] rounded-2xl overflow-hidden shadow-inner shrink-0 leading-none">
+                  <Image
+                    src={BENTO_BLOCKS[expandedTile].image}
+                    alt={BENTO_BLOCKS[expandedTile].title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+
+                {/* Modal Right/Details */}
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-[#77966D] font-bold block mb-1">
+                      {BENTO_BLOCKS[expandedTile].category}
+                    </span>
+                    <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#AA4A44] leading-tight mb-3">
+                      {BENTO_BLOCKS[expandedTile].title}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium text-[#2B2927]/90 leading-relaxed mb-6 italic">
+                      &ldquo;{BENTO_BLOCKS[expandedTile].benefit}&rdquo;
+                    </p>
+                    
+                    <div className="space-y-2 mb-8">
+                      <span className="block font-mono text-[9px] uppercase tracking-wider text-[#AA4A44] font-bold mb-2">Extended Features</span>
+                      {BENTO_BLOCKS[expandedTile].bullets.map((bullet, bIdx) => (
+                        <div key={bIdx} className="flex items-start text-xs text-[#2B2927]/80">
+                          <span className="mr-2 text-[#77966D] font-bold">✓</span>
+                          <span>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setExpandedTile(null);
+                        handleCtaClick("tab-tour");
+                      }}
+                      className="flex-1 py-3 px-4 bg-[#AA4A44] hover:bg-[#AA4A44]/90 text-white rounded-full text-[10px] font-mono font-bold uppercase tracking-wider transition text-center"
+                    >
+                      Book Tour
+                    </button>
+                    <button
+                      onClick={() => {
+                        setExpandedTile(null);
+                        handleCtaClick("tab-callback");
+                      }}
+                      className="flex-1 py-3 px-4 border border-[#AA4A44]/30 hover:border-[#AA4A44] text-[#AA4A44] rounded-full text-[10px] font-mono font-bold uppercase tracking-wider transition text-center bg-transparent"
+                    >
+                      Request Call
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* SECTION 3: THE MIRAI 4+1 MODEL */}
