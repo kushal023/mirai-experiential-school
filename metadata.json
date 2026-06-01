@@ -1,0 +1,6 @@
+{
+  "name": "Mirai Experiential School",
+  "description": "The most comprehensive, premium IB school website in India built around inquiry, experience, and real-world learning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
