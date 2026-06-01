@@ -439,18 +439,6 @@ export default function MiraiSchoolWebsite() {
                   <span>Book Campus Tour</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button 
-                  onClick={() => {
-                    scrollToSection("cta-block");
-                    const prosTab = document.getElementById("tab-prospectus");
-                    if (prosTab) prosTab.click();
-                  }}
-                  className="px-8 py-4 border-2 border-[#AA4A44] text-[#AA4A44] bg-[#FAF7F2]/80 hover:bg-[#AA4A44]/10 transition rounded-full font-semibold uppercase tracking-wider text-xs flex items-center space-x-2"
-                  id="hero-download-pros-btn"
-                >
-                  <span>Download Prospectus</span>
-                  <FileText className="w-4 h-4" />
-                </button>
               </div>
             </div>
 
@@ -571,11 +559,7 @@ export default function MiraiSchoolWebsite() {
                       {block.benefit}
                     </p>
                     
-                    {/* Link Trigger */}
-                    <div className="flex items-center space-x-2 text-[#C99996] font-mono text-[10px] uppercase tracking-wider font-bold group-hover:text-white transition-colors duration-300">
-                      <span>Click to discover room details</span>
-                      <ArrowRight className="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1.5 transition-transform duration-300" />
-                    </div>
+     
                   </div>
                 </div>
               </div>
@@ -631,13 +615,7 @@ export default function MiraiSchoolWebsite() {
                   <span>Request A Callback</span>
                   <Phone className="w-4 h-4" />
                 </button>
-                <button
-                  onClick={() => handleCtaClick("tab-prospectus")}
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#77966D] hover:bg-[#77966D]/5 text-[#77966D] bg-transparent transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
-                >
-                  <span>Download Prospectus</span>
-                  <FileText className="w-4 h-4" />
-                </button>
+    
               </div>
             </div>
           </div>
