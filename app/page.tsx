@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   Cpu,
   Workflow,
@@ -16,6 +17,7 @@ import {
   MapPin,
   Calendar,
   ArrowRight,
+  MessageCircle,
   Clock,
   Compass,
   Users,
@@ -42,6 +44,7 @@ import {
   AlertCircle,
   HelpCircle,
   Heart,
+  School,
   BookMarked
 } from "lucide-react";
 
@@ -49,108 +52,60 @@ import {
 interface TrustBlock {
   id: string;
   title: string;
-  description: string;
   category: string;
   image: string;
-  details: string[];
 }
 
 const TRUST_BLOCKS: TrustBlock[] = [
   {
     id: "inquiry",
     title: "Inquiry Based Classrooms",
-    description: "Students learn by asking questions, not just memorizing answers.",
     category: "COGNITIVE RIGOR",
-    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800",
-    details: ["Active conceptual questioning", "Student-led investigations", "Constructivist learning theory", "Peer feedback loops"]
+    image: "/images/class-room.png"
   },
-  {
-    id: "future-fridays",
-    title: "Future Fridays™",
-    description: "Harvard-inspired FIELD model: 4 days of academics, 1 day of real-world immersion.",
-    category: "SIGNATURE EXPERIENTIAL",
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800",
-    details: ["Robotics lab partnership", "Corporate headquarters visits", "Entrepreneur mentorship", "Capstone research projects"]
-  },
-  {
-    id: "design-thinking",
-    title: "Design Thinking Lab",
-    description: "Inspired by Stanford d.school. Solving physical, human, and ecological challenges.",
-    category: "STANFORD PARADIGM",
-    image: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=800",
-    details: ["Empathize & define structures", "Ideation sessions", "Rapid 3D modeling", "Iterative user feedback"]
-  },
-  {
-    id: "maker-lab",
-    title: "Maker Lab",
-    description: "A professional design suite to Identify, Ideate, Prototype, and Build.",
-    category: "ENGINEERING HUB",
-    image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800",
-    details: ["Dual-axis CNC & 3D printers", "Micro-controller assemblies", "Tension & stress evaluation", "Material science labs"]
-  },
+
+
   {
     id: "faculty",
     title: "Expert Faculty",
-    description: "Elite, internationally certified IB mentors and professional industry fellows.",
     category: "GLOBAL EDUCATORS",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800",
-    details: ["100% IB Certified educators", "Ivy-league visiting fellows", "Continuous global masterclasses", "1:8 teacher-student guidance"]
+    image: "/images/inquiry.png"
   },
   {
     id: "communities",
     title: "Small Learning Communities",
-    description: "Deep personalized support through highly-focused advisory circles.",
     category: "PASTORAL ADVANTAGE",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-    details: ["Advisory groups of 12", "Personal growth plans", "Peer coaching forums", "One-on-one executive review"]
-  },
-  {
-    id: "science-labs",
-    title: "Modern Science Labs",
-    description: "Exploration-first spaces featuring custom Physics, Chemistry, and Biology hubs.",
-    category: "RESEARCH ENVIRONMENT",
-    image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800",
-    details: ["Spectrophotometry arrays", "Precision chemical scales", "Bio-turbidity tracking assets", "Digital telemetry integration"]
+   image: "/images/library.png"
   },
   {
     id: "sports",
     title: "Sports Infrastructure",
-    description: "Premium facilities for Football, Basketball, Indoor sports, and wellness.",
     category: "PHYSICAL FORTITUDE",
-    image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800",
-    details: ["Six-lane ozone aquatic rink", "Professional indoor court", "Full-sized grass turf setup", "Strength & fitness evaluation"]
+    image: "/images/sports.jpg"
   },
   {
     id: "arts",
     title: "Arts & Creativity",
-    description: "A sanctuary for Music, Fine Arts, Theater, and performance expression.",
     category: "CREATIVE FLUENCY",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=800",
-    details: ["Professional acoustics booth", "Ceramics and carving labs", "Interactive theater stage", "Digital photography suites"]
+    image: "/images/Arts.png"
   },
   {
     id: "dining",
     title: "Healthy Dining",
-    description: "Balanced, organic menus designed by experts in a secure, hygienic hall.",
     category: "NUTRITIONAL EXCELLENCE",
-    image: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=800",
-    details: ["Farmer-to-school fresh grains", "Allergy-segregated hygiene", "HACCP accredited kitchen", "Dietitian balanced menus"]
+   image: "/images/dining-hall.png"
   },
   {
     id: "day-boarding",
-    title: "Day Boarding Flexibility",
-    description: "Enriched evening academic, design, and fitness programs for dynamic parents.",
+    title: "Basketball & Tennis Court",
     category: "MODERN CONVENIENCE",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
-    details: ["Extended laboratory guidance", "Supervised prep coursework", "Professional evening sports", "Nutritional twilight snacks"]
+   image: "/images/Basketball.jpg"
   },
   {
     id: "full-boarding",
     title: "Full Boarding",
-    description: "Fostering character, ultimate independence, and global responsibility.",
     category: "CHARACTER ENGAGEMENT",
-    image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800",
-    details: ["Neoprene sealed rooms", "24x7 doctor-nurse presence", "Multicultural student councils", "Structured leadership routines"]
+    image: "/images/inquiry.png"
   }
 ];
 
@@ -274,15 +229,13 @@ export default function MiraiSchoolWebsite() {
       {/* HEADER NAVIGATION */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#FAF7F2]/95 backdrop-blur-md shadow-md border-b border-[#E7E7E7] py-3" : "bg-transparent py-5"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection("hero")}>
-            <div className="w-10 h-10 rounded-full bg-[#AA4A44] flex items-center justify-center text-[#FCFAF7] font-bold text-lg tracking-wider">
-              M
-            </div>
-            <div>
-              <span className="font-serif font-extrabold text-xl uppercase tracking-widest text-[#AA4A44] block">MIRAI</span>
-              <span className="text-[9px] uppercase font-mono tracking-widest block text-[#77966D] -mt-1 font-bold">Experiential School</span>
-            </div>
-          </div>
+ <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection("hero")}>
+  <img
+    src="/images/mirai-logo.png"
+    alt="Mirai Experiential School"
+    className="h-14 w-auto object-contain"
+  />
+</div>
           
           <nav className="hidden lg:flex space-x-7 text-xs font-semibold uppercase tracking-wider font-mono text-[#1C1917]/80">
             <button onClick={() => scrollToSection("why-exists")} className="hover:text-[#AA4A44] transition">Our Philosophy</button>
@@ -302,7 +255,7 @@ export default function MiraiSchoolWebsite() {
             >
               Book Tour
             </button>
-            <button 
+            {/* <button 
               onClick={() => setIsAiChatOpen(true)}
               className="p-2.5 rounded-full border border-[#C99996]/50 text-[#AA4A44] bg-[#C99996]/10 hover:bg-[#C99996]/20 transition relative"
               title="Admissions Chat"
@@ -310,21 +263,21 @@ export default function MiraiSchoolWebsite() {
             >
               <Sparkles className="w-4 h-4" />
               <span className="absolute -top-1 -right-1 block w-2 h-2 rounded-full bg-[#77966D]" />
-            </button>
+            </button> */}
           </div>
         </div>
       </header>
 
       {/* FLOAT CONCIERGE BUTTON */}
       <div className="fixed bottom-6 right-6 z-40">
-        <button
+        {/* <button
           onClick={() => setIsAiChatOpen(true)}
           className="flex items-center space-x-2 bg-[#AA4A44] text-white py-3.5 px-5 rounded-full shadow-2xl hover:bg-[#AA4A44]/90 transition border border-white/20"
           id="floating-ai-concierge-btn"
         >
           <Sparkle className="w-4 h-4 animate-pulse text-[#FAF7F2]" />
           <span className="font-mono text-xs font-bold tracking-wide uppercase">Admissions AI</span>
-        </button>
+        </button> */}
       </div>
 
       {/* SECTION 1 — HERO */}
@@ -342,7 +295,7 @@ export default function MiraiSchoolWebsite() {
             <div className="lg:col-span-7 flex flex-col justify-center text-left">
               <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#AA4A44]/5 border border-[#AA4A44]/15 rounded-full w-fit mb-5">
                 <span className="w-2 h-2 rounded-full bg-[#AA4A44] animate-ping" />
-                <span className="font-mono text-[10px] text-[#AA4A44] font-extrabold uppercase tracking-widest">Gurugram NCR, India</span>
+                <span className="font-mono text-[10px] text-[#AA4A44] font-extrabold uppercase tracking-widest">Ghaziabad Delhi NCR, India</span>
               </div>
               
               <h1 className="font-serif font-black text-4xl sm:text-5xl md:text-6xl text-[#1C1917] leading-[1.08] tracking-tight mb-6">
@@ -366,48 +319,60 @@ export default function MiraiSchoolWebsite() {
                   <span>Book A Campus Visit</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button 
-                  onClick={() => handleCtaClick("tab-prospectus")}
-                  className="w-full sm:w-auto px-8 py-4 border-2 border-[#1C1917]/20 text-[#1C1917] bg-transparent hover:bg-[#1C1917]/5 transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
-                  id="hero-download-pros-btn"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>Download Prospectus</span>
-                </button>
+<button
+  onClick={() =>
+    window.open(
+      "https://wa.me/919220522282?text=Hello%20Mirai%20School,%20I%20would%20like%20to%20know%20more%20about%20admissions.",
+      "_blank"
+    )
+  }
+  className="w-full sm:w-auto px-8 py-4 border-2 border-[#1C1917]/20 text-[#1C1917] bg-transparent hover:bg-[#1C1917]/5 transition rounded-full font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2"
+  id="hero-whatsapp-btn"
+>
+  <MessageCircle className="w-4 h-4" />
+  <span>Talk to Admissions</span>
+</button>
               </div>
             </div>
 
             {/* Right Cinematic Slider / Layout representing Robotics, Prototype, Collaboration */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-[#E7E7E7] shadow-xl group bg-white p-2">
-                <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800"
-                    alt="Mirai Innovation and Prototyping Laboratory"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    priority
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
-                  
-                  {/* Real-time Video Simulation overlay line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#77966D] to-transparent animate-[bounce_6s_infinite] opacity-60" />
+            <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden">
+  <Image
+    src="/images/mirai-campus-hero.png"
+    alt="Mirai Experiential School Campus"
+    fill
+    priority
+    sizes="(max-width: 768px) 100vw, 700px"
+    className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+  />
 
-                  {/* Dynamic badge overlay inside photo */}
-                  <div className="absolute bottom-6 left-6 right-6 p-5 bg-[#FAF7F2]/95 backdrop-blur-md rounded-2xl border border-white/20 shadow-md">
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-[#AA4A44]/10 rounded-xl text-[#AA4A44]">
-                        <Cpu className="w-5 h-5 animate-spin" style={{ animationDuration: "12s" }} />
-                      </div>
-                      <div>
-                        <span className="block font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-bold">NEXT-GEN BUILDERS</span>
-                        <span className="block font-serif font-bold text-sm text-[#1C1917]">Inquiry Discussions & Robotics</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  {/* Premium Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
+
+  {/* Accent Light Sweep */}
+  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#AFBFAA] to-transparent opacity-70" />
+
+  {/* Campus Information Card */}
+  <div className="absolute bottom-6 left-6 right-6 p-5 bg-white/92 backdrop-blur-md rounded-2xl border border-white/30 shadow-xl">
+    <div className="flex items-center space-x-3">
+      <div className="p-2 bg-[#AA4A44]/10 rounded-xl">
+        <School className="w-5 h-5 text-[#AA4A44]" />
+      </div>
+
+      <div>
+        <span className="block font-mono text-[9px] uppercase tracking-[0.2em] text-[#77966D] font-bold">
+          IB WORLD SCHOOL
+        </span>
+
+        <span className="block font-serif font-bold text-sm text-[#1C1917]">
+          Future Fridays™ • Harvard-Inspired 4+1 Learning Model
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
               </div>
             </div>
             
@@ -527,8 +492,7 @@ export default function MiraiSchoolWebsite() {
             {TRUST_BLOCKS.map((block, idx) => (
               <div
                 key={block.id}
-                onClick={() => setExpandedTile(idx)}
-                className="group relative h-96 rounded-[2rem] overflow-hidden border border-[#E7E7E7] bg-white cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group relative aspect-square rounded-[2rem] overflow-hidden border border-[#E7E7E7] bg-white shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div className="absolute inset-0 z-0">
                   <Image 
@@ -552,102 +516,12 @@ export default function MiraiSchoolWebsite() {
 
                   <div>
                     <h3 className="font-serif font-bold text-lg mb-1 text-white leading-tight group-hover:text-[#C99996] transition-colors">{block.title}</h3>
-                    <p className="text-[11px] leading-relaxed text-white/80 line-clamp-2 mb-4 font-sans">{block.description}</p>
-                    <div className="flex items-center space-x-1 font-mono text-[10px] text-[#C99996] font-bold group-hover:text-white transition-colors">
-                      <span>Explore details</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1.5 transition-transform" />
-                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Dynamic Expanded Content Dialog Overlay */}
-        <AnimatePresence>
-          {expandedTile !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-              onClick={() => setExpandedTile(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.95, y: 20, opacity: 0 }}
-                animate={{ scale: 1, y: 0, opacity: 1 }}
-                exit={{ scale: 0.95, y: 20, opacity: 0 }}
-                transition={{ type: "spring", duration: 0.5 }}
-                className="relative w-full max-w-2xl bg-[#FCFAF7] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#E7E7E7] p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setExpandedTile(null)}
-                  className="absolute top-4 right-4 p-2 bg-white/80 hover:bg-white rounded-full text-[#AA4A44] transition shadow-md z-10"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-
-                <div className="w-full md:w-1/2 relative aspect-video md:aspect-[3/4] rounded-2xl overflow-hidden shadow-inner leading-none">
-                  <Image
-                    src={TRUST_BLOCKS[expandedTile].image}
-                    alt={TRUST_BLOCKS[expandedTile].title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-
-                <div className="w-full md:w-1/2 flex flex-col justify-between">
-                  <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#77966D] font-bold block mb-1">
-                      {TRUST_BLOCKS[expandedTile].category}
-                    </span>
-                    <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#AA4A44] leading-tight mb-3">
-                      {TRUST_BLOCKS[expandedTile].title}
-                    </h3>
-                    <p className="text-xs font-semibold text-[#1C1917]/85 leading-relaxed mb-6 italic">
-                      &ldquo;{TRUST_BLOCKS[expandedTile].description}&rdquo;
-                    </p>
-                    
-                    <div className="space-y-2 mb-8">
-                      <span className="block font-mono text-[9px] uppercase tracking-wider text-[#AA4A44] font-bold mb-2">Curriculum Integrations</span>
-                      {TRUST_BLOCKS[expandedTile].details.map((detail, bIdx) => (
-                        <div key={bIdx} className="flex items-start text-xs text-[#1C1917]/70 font-mono">
-                          <Check className="w-3.5 h-3.5 mr-2 text-[#77966D] flex-shrink-0 mt-0.5" />
-                          <span>{detail}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setExpandedTile(null);
-                        handleCtaClick("tab-tour");
-                      }}
-                      className="flex-1 py-3 px-4 bg-[#AA4A44] hover:bg-[#AA4A44]/90 text-white rounded-full text-[10px] font-mono font-bold uppercase tracking-wider transition text-center"
-                    >
-                      Book Tour
-                    </button>
-                    <button
-                      onClick={() => {
-                        setExpandedTile(null);
-                        handleCtaClick("tab-callback");
-                      }}
-                      className="flex-1 py-3 px-4 border border-[#AA4A44]/30 hover:border-[#AA4A44] text-[#AA4A44] rounded-full text-[10px] font-mono font-bold uppercase tracking-wider transition text-center bg-transparent"
-                    >
-                      Request Call
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </section>
 
       {/* SECTION 4 — THE MIRAI DIFFERENCE */}
@@ -1094,7 +968,6 @@ export default function MiraiSchoolWebsite() {
             {[
               { id: "classrooms", label: "Classrooms" },
               { id: "library", label: "Library" },
-              { id: "maker-lab", label: "Maker Lab" },
               { id: "science-labs", label: "Science Labs" },
               { id: "sports", label: "Sports Fields" },
               { id: "art-spaces", label: "Art Spaces" },
@@ -1119,22 +992,17 @@ export default function MiraiSchoolWebsite() {
             {[
               {
                 id: "classrooms",
-                title: "Inquiry Classrooms",
-                desc: "Natural lighting, circular desk arrays, and interactive display systems tailored to fluid collaboration.",
-                img: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800"
+                title: "Inquiry-Based Classrooms",
+                desc: "Smart spaces designed for curiosity, collaboration, and deeper learning.",
+                img: "/images/class-room.png"
               },
               {
                 id: "library",
                 title: "Global Scholastic Library",
-                desc: "An architectural wonder containing 15,000 physical volumes, digital journal links, and silent reasoning zones.",
-                img: "https://images.unsplash.com/photo-1549675585-d6848740c890?auto=format&fit=crop&q=80&w=800"
+                desc: "A world-class library where curiosity grows through books, research, and discovery.",
+                img: "/images/library.png"
               },
-              {
-                id: "maker-lab",
-                title: "Maker Prototyping Lab",
-                desc: "Fitted with high-accuracy CNC cutters, dual circuit makers, and structured safety guidance suites.",
-                img: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800"
-              },
+             
               {
                 id: "science-labs",
                 title: "Physics, Chem & Bio Complexes",
@@ -1143,9 +1011,9 @@ export default function MiraiSchoolWebsite() {
               },
               {
                 id: "sports",
-                title: "Premium Sports Complexes",
-                desc: "Equipped with professional indoor courts, full grass turf fields, and a six-lane ozone-heated pool.",
-                img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800"
+                title: "Sports & Activity Facilities",
+                desc: "Thoughtfully designed indoor and outdoor spaces that encourage movement, teamwork, confidence, and healthy development at every age.",
+                img: "/images/sports.jpg"
               },
               {
                 id: "art-spaces",
@@ -1157,13 +1025,13 @@ export default function MiraiSchoolWebsite() {
                 id: "dining",
                 title: "Nutritional Dining Hall",
                 desc: "Bright, thoroughly clean, utilizing automated thermal sanitizer washers and healthy farmer networks.",
-                img: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=800"
+                img: "/images/dining-hall.png"
               },
               {
                 id: "hostel",
                 title: "Climate Controlled Hostel Suites",
                 desc: "Designed with healthy organic mattresses, personal logic study desks, and neat personal lockers.",
-                img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800"
+                img: "/images/hostel-room.webp"
               },
               {
                 id: "activities",
@@ -1182,17 +1050,10 @@ export default function MiraiSchoolWebsite() {
               return (
                 <div key={campus.id} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-fadeIn">
                   <div className="lg:col-span-5">
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-1">SELECTED PHYSICAL SPACE</span>
                     <h3 className="font-serif font-black text-2xl sm:text-3xl text-[#1C1917] mb-4">{campus.title}</h3>
                     <p className="text-sm font-sans text-[#1C1917]/85 leading-relaxed leading-relaxed mb-6">
                       {campus.desc}
                     </p>
-                    <button 
-                      onClick={() => handleCtaClick("tab-tour")}
-                      className="text-xs uppercase font-mono tracking-widest font-extrabold text-[#AA4A44] hover:underline"
-                    >
-                      → Arrange private walkthrough
-                    </button>
                   </div>
                   <div className="lg:col-span-7 relative aspect-video rounded-3xl overflow-hidden border border-[#E7E7E7]">
                     <Image 
@@ -1423,9 +1284,7 @@ export default function MiraiSchoolWebsite() {
                   <h3 className="font-serif font-bold text-lg mb-2 text-[#1C1917] leading-tight">{adm.title}</h3>
                   <p className="text-xs text-[#1C1917]/70 font-sans leading-relaxed">{adm.desc}</p>
                 </div>
-                <div className="pt-4 border-t border-[#E7E7E7] mt-6 text-[9px] font-mono text-[#77966D] font-bold">
-                  PORTFOLIO REVIEW COMPULSORY
-                </div>
+
               </div>
             ))}
           </div>
@@ -1454,11 +1313,11 @@ export default function MiraiSchoolWebsite() {
                 <span className="font-mono text-[9px] text-[#77966D] font-extrabold uppercase block mb-1">CONCIERGE AMBASSADOR DEAN</span>
                 <div className="flex items-center space-x-2 text-[#AA4A44] font-serif font-bold text-lg mb-1">
                   <Phone className="w-5 h-5 flex-shrink-0" />
-                  <span>+91 98110 543XX</span>
+                  <span>+91 9220522282</span>
                 </div>
                 <div className="flex items-center space-x-2 text-[#77966D] font-mono text-[10px]">
                   <MapPin className="w-4 h-4 flex-shrink-0" />
-                  <span>Sohna Road, Gurugram NCR</span>
+                  <span>BLK Ansal, D00, Avantika Colony, Shastri Nagar, Ghaziabad, Uttar Pradesh 201002</span>
                 </div>
               </div>
             </div>
@@ -1651,19 +1510,16 @@ export default function MiraiSchoolWebsite() {
       <footer className="bg-[#1C1917] text-[#FAF7F2]/80 py-16 border-t border-white/5 font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
           <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-[#AA4A44] flex items-center justify-center text-white font-bold text-lg">
-                M
-              </div>
-              <div>
-                <span className="font-serif font-extrabold text-lg uppercase tracking-widest text-white block">MIRAI</span>
-                <span className="text-[9px] uppercase font-mono tracking-widest block text-[#77966D] -mt-1 font-bold">Experiential School</span>
-              </div>
-            </div>
+         <div className="mb-6">
+  <img
+    src="/images/mirai-logo.png"
+    alt="Mirai Experiential School"
+    className="h-16 w-auto object-contain"
+  />
+</div>
             <p className="text-xs text-[#FAF7F2]/65 leading-relaxed mb-6 font-sans">
               NCR&apos;s candidate IB school mapping transdisciplinary academic inquiry directly against hands-on robotic capstones, heated ozone aquatics, and elite university portfolio paths.
             </p>
-            <span className="text-[10px] font-mono hover:text-white transition cursor-pointer">Sohna Road, Gurugram NCR</span>
           </div>
 
           <div>

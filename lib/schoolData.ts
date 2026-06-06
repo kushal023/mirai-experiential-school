@@ -44,7 +44,7 @@ export interface ActivityDetail {
 
 export const SCHOOL_DATA = {
   name: "Mirai Experiential School",
-  location: "Gurugram, National Capital Region (NCR), India",
+  location: "Ghaziabad, National Capital Region (NCR), India",
   tagline: "Where Ideas Turn Into Action",
   subheading: "A Future-Ready International IB School Built Around Inquiry, Experience and Real-World Learning",
   trustIndicators: [
