@@ -1126,13 +1126,13 @@ export default function MiraiSchoolWebsite() {
             {[
               { id: "classrooms", label: "Classrooms" },
               { id: "library", label: "Library" },
-              { id: "science-labs", label: "Science Labs" },
+              { id: "science-labs", label: "Early Years Classroom" },
               { id: "sports", label: "Sports Fields" },
-              { id: "art-spaces", label: "Art Spaces" },
+              { id: "art-spaces", label: "Play Zone" },
               { id: "dining", label: "Dining Hall" },
               { id: "hostel", label: "Hostel Rooms" },
-              { id: "activities", label: "Activity Areas" },
-              { id: "outdoor", label: "Outdoor Spaces" }
+              { id: "activities", label: "School Corridor" },
+              { id: "outdoor", label: "Campus Architecture" }
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -1163,8 +1163,8 @@ export default function MiraiSchoolWebsite() {
              
               {
                 id: "science-labs",
-                title: "Physics, Chem & Bio Complexes",
-                desc: "Double-insulated environmental ventilation, professional tools, and direct telemetry plotting monitors.",
+                title: "Early Years Programme (EYP)",
+                desc: "A joyful learning environment where children learn through play, exploration, and inquiry, building confidence, curiosity, and a love for learning.",
                 img: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=800"
               },
               {
@@ -1175,9 +1175,9 @@ export default function MiraiSchoolWebsite() {
               },
               {
                 id: "art-spaces",
-                title: "Sound, Theater & Fine Arts Studios",
-                desc: "Fully isolated sound editing labs, recording rooms, and custom theater stages.",
-                img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=800"
+                title:  "Indoor Play & Activity Zone",
+                desc:  "A safe and engaging indoor space where children develop coordination, creativity, confidence, and social skills through active play.",
+                img: "/images/Arts.png"
               },
               {
                 id: "dining",
@@ -1193,15 +1193,15 @@ export default function MiraiSchoolWebsite() {
               },
               {
                 id: "activities",
-                title: "Dynamic Co-Curricular Complexes",
-                desc: "Open spaces facing steps where student-initiated guilds assemble to showcase action capstones.",
-                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800"
+               title: "Modern School Corridors",
+                desc: "Bright, spacious, and well-designed corridors that create a safe, welcoming, and organized learning environment.",
+                img: "/images/Corridor.png"
               },
               {
                 id: "outdoor",
-                title: "Neem Gardens & Amphitheaters",
-                desc: " Waldorf-inspired green canopies designed to shelter physical activities and student discussions.",
-                img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800"
+                title: "Nature-Inspired Campus Design",
+                desc: " Designed to encourage exploration, creativity, outdoor learning, and meaningful student interactions.",
+                img: "/images/campus.png"
               }
             ].map((campus) => {
               if (activeCampusTab !== campus.id) return null;
@@ -1336,66 +1336,7 @@ export default function MiraiSchoolWebsite() {
         </div>
       </section>
 
-      {/* SECTION 13 — STUDENT LIFE */}
-      <section className="py-24 bg-[#FAF7F2] border-b border-[#E7E7E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3 font-bold">CO-CURRICULAR FLUX</span>
-            <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#AA4A44] leading-tight">
-              An Active Expression of Student Life
-            </h2>
-            <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-4" />
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                id: "sports-life",
-                title: "Competitive Athletics & Sports",
-                desc: "Full football tournaments, professional basketball leagues, and swimming rinks audited daily.",
-                category: "SPORTS & WELLNESS"
-              },
-              {
-                id: "guilds-life",
-                title: "Student Research Guilds",
-                desc: "Debating societies, space telemetry hobby circles, and electronics prototyping leagues.",
-                category: "STUDENT CLUBS"
-              },
-              {
-                id: "celebration-life",
-                title: "Experiential Cultural Explorations",
-                desc: "Anual festivals, Shakespearean amphitheater productions, and global climatic workshops.",
-                category: "CELEBRATIONS & EVENTS"
-              }
-            ].map((st, sIndex) => (
-              <div 
-                key={ST_LIFE_IMAGES[sIndex]} 
-                className="group relative h-80 rounded-[2rem] overflow-hidden border border-[#E7E7E7] shadow-sm hover:shadow-lg transition-transform hover:translate-y-[-2px] duration-300"
-              >
-                <div className="absolute inset-0 z-0">
-                  <Image 
-                    src={ST_LIFE_IMAGES[sIndex]}
-                    alt={st.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 360px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
-                </div>
-                
-                <div className="relative z-10 p-6 h-full flex flex-col justify-between text-white font-sans">
-                  <span className="font-mono text-[9px] uppercase tracking-widest bg-white/20 border border-white/10 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm w-fit block">{st.category}</span>
-                  <div>
-                    <h3 className="font-serif text-lg font-bold text-white mb-1 leading-snug group-hover:text-[#C99996] transition-colors">{st.title}</h3>
-                    <p className="text-xs text-white/80 leading-relaxed font-sans">{st.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 14 — ADMISSIONS */}
       <section id="admissions" className="py-24 bg-[#FCFAF7] border-b border-[#E7E7E7]">
@@ -1667,19 +1608,20 @@ export default function MiraiSchoolWebsite() {
       {/* FOOTER */}
       <footer className="bg-[#1C1917] text-[#FAF7F2]/80 py-16 border-t border-white/5 font-sans">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
-          <div>
-         <div className="mb-6">
-  <img
-    src="/images/mirai-logo.png"
-    alt="Mirai Experiential School"
-    className="h-16 w-auto object-contain"
-  />
-</div>
-            <p className="text-xs text-[#FAF7F2]/65 leading-relaxed mb-6 font-sans">
-              NCR&apos;s candidate IB school mapping transdisciplinary academic inquiry directly against hands-on robotic capstones, heated ozone aquatics, and elite university portfolio paths.
-            </p>
-          </div>
+<div>
+  
 
+  <div className="flex items-start gap-3">
+    <MapPin className="w-5 h-5 text-[#C99996] mt-0.5 flex-shrink-0" />
+
+    <p className="text-xs text-[#FAF7F2]/70 leading-relaxed font-sans">
+      Mirai Experiential School<br />
+      BLK Ansal, D00,<br />
+      Avantika Colony, Shastri Nagar,<br />
+      Ghaziabad, Uttar Pradesh 201002
+    </p>
+  </div>
+</div>
           <div>
             <h5 className="font-serif font-semibold text-base text-[#C99996] mb-4">Candidate Curriculum</h5>
             <ul className="space-y-2 text-xs font-mono text-[#FAF7F2]/70">
