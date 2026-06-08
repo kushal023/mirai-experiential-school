@@ -56,56 +56,61 @@ interface TrustBlock {
   image: string;
 }
 
-const TRUST_BLOCKS: TrustBlock[] = [
+const TRUST_BLOCKS: TrustBlock[] =[
   {
     id: "inquiry",
     title: "Inquiry Based Classrooms",
-    category: "COGNITIVE RIGOR",
+    category: "SMART LEARNING",
     image: "/images/class-room.png"
   },
-
 
   {
     id: "faculty",
     title: "Expert Faculty",
-    category: "GLOBAL EDUCATORS",
-    image: "/images/inquiry.png"
+    category: "EXPERIENCED EDUCATORS",
+    image: "/images/Expert.png"
   },
+
   {
     id: "communities",
     title: "Small Learning Communities",
-    category: "PASTORAL ADVANTAGE",
-   image: "/images/library.png"
+    category: "PERSONAL ATTENTION",
+    image: "/images/library.png"
   },
+
   {
     id: "sports",
     title: "Sports Infrastructure",
-    category: "PHYSICAL FORTITUDE",
+    category: "SPORTS & WELLNESS",
     image: "/images/sports.jpg"
   },
+
   {
     id: "arts",
     title: "Arts & Creativity",
-    category: "CREATIVE FLUENCY",
+    category: "CREATIVE EXPRESSION",
     image: "/images/Arts.png"
   },
+
   {
     id: "dining",
     title: "Healthy Dining",
-    category: "NUTRITIONAL EXCELLENCE",
-   image: "/images/dining-hall.png"
+    category: "STUDENT WELLBEING",
+    image: "/images/dining-hall.png"
   },
+
   {
     id: "day-boarding",
     title: "Basketball & Tennis Court",
-    category: "MODERN CONVENIENCE",
-   image: "/images/Basketball.jpg"
+    category: "ACTIVE CAMPUS LIFE",
+    image: "/images/Basketball.jpg"
   },
+
   {
     id: "full-boarding",
-    title: "Full Boarding",
-    category: "CHARACTER ENGAGEMENT",
-    image: "/images/inquiry.png"
+    title: "Box Cricket Facility",
+    category: "Box Cricket Facility",
+    image: "/images/full-boarding.png"
   }
 ];
 
@@ -380,18 +385,29 @@ export default function MiraiSchoolWebsite() {
         </div>
 
         {/* TRUST STRIP */}
-        <div className="border-t border-[#E7E7E7] bg-white absolute bottom-0 left-0 right-0 py-4 shadow-sm z-10">
-          <div className="max-w-7xl mx-auto px-4 overflow-x-auto scrollbar-none">
-            <div className="flex items-center justify-between min-w-[700px] text-[11px] font-mono font-bold uppercase tracking-widest text-[#1C1917]/70 divide-x divide-[#E7E7E7]">
-              <span className="px-4 text-[#AA4A44]">IB Curriculum Integration</span>
-              <span className="px-4">Future Fridays™ Fieldwork</span>
-              <span className="px-4">Stanford Design Thinking</span>
-              <span className="px-4">Integrated Maker Lab</span>
-              <span className="px-4">Flexible Day Boarding</span>
-              <span className="px-4">Elite Resident Boarding</span>
-            </div>
-          </div>
-        </div>
+<div className="absolute bottom-0 left-0 right-0 bg-[#AA4A44] py-4 overflow-hidden z-10">
+  <div className="flex w-max animate-ticker">
+    {/* First Set */}
+    <div className="flex items-center whitespace-nowrap text-[11px] font-mono font-bold uppercase tracking-widest text-white">
+      <span className="px-8">IB Curriculum Integration</span>
+      <span className="px-8">Future Fridays™ Fieldwork</span>
+      <span className="px-8">Stanford Design Thinking</span>
+      <span className="px-8">Integrated Maker Lab</span>
+      <span className="px-8">Flexible Day Boarding</span>
+      <span className="px-8">Elite Resident Boarding</span>
+    </div>
+
+    {/* Duplicate Set */}
+    <div className="flex items-center whitespace-nowrap text-[11px] font-mono font-bold uppercase tracking-widest text-white">
+      <span className="px-8">IB Curriculum Integration</span>
+      <span className="px-8">Future Fridays™ Fieldwork</span>
+      <span className="px-8">Stanford Design Thinking</span>
+      <span className="px-8">Integrated Maker Lab</span>
+      <span className="px-8">Flexible Day Boarding</span>
+      <span className="px-8">Elite Resident Boarding</span>
+    </div>
+  </div>
+</div>
       </section>
 
       {/* EMOTIONAL FOUNDATION BRIDGING INTERFACE */}
@@ -480,10 +496,10 @@ export default function MiraiSchoolWebsite() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3">PARENTAL CONFIDENCE INDEX</span>
             <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#1C1917] leading-tight">
-              An Architectural Framework Built on Uncompromised Trust
+             A Safe Environment for Learning & Growth
             </h2>
             <p className="text-sm text-[#1C1917]/70 mt-4 leading-relaxed font-sans max-w-xl mx-auto">
-              Thrive inside a secure campus mapping critical thinking directly against physical, logical, and computational milestones.
+             A secure, nurturing campus where children feel confident, supported, and inspired to explore their full potential.
             </p>
             <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-5" />
           </div>
@@ -508,9 +524,9 @@ export default function MiraiSchoolWebsite() {
 
                 <div className="relative z-10 p-6 h-full flex flex-col justify-between text-white">
                   <div className="flex justify-between items-start">
-                    <span className="font-mono text-[9px] uppercase tracking-widest bg-white/20 px-2.5 py-1 rounded-full text-white backdrop-blur-sm border border-white/10">
-                      {block.category}
-                    </span>
+                   <span className="font-mono text-[9px] uppercase tracking-widest bg-[#AA4A44] px-2.5 py-1 rounded-full text-white shadow-sm">
+  {block.category}
+</span>
                     <span className="font-mono text-xs text-white/40">{"0" + (idx + 1)}</span>
                   </div>
 
@@ -724,25 +740,25 @@ export default function MiraiSchoolWebsite() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <span className="font-mono text-xs uppercase text-[#AA4A44] tracking-widest font-bold block mb-1">MON TO THU CYCLE</span>
-                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#1C1917] mb-4">Fusing Rigorous IB Concepts</h3>
+                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#1C1917] mb-4">Strong IB Academics with Real Understanding</h3>
                   <p className="text-sm text-[#1C1917]/85 leading-relaxed mb-6 font-sans">
-                    Structured around cognitive depth, transdisciplinary frameworks, and high-compute science cycles. Students master literature analysis, mathematical calculations, and physical sciences systematically, conforming to candidate IB expectations.
+                   Structured around deep thinking, interdisciplinary learning, and scientific inquiry. Students develop strong skills in language, mathematics, and science while building the critical thinking and problem-solving abilities expected in an IB classroom.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-[#FAF7F2] rounded-2xl border border-[#E7E7E7]">
-                      <span className="text-[10px] font-mono font-bold uppercase text-[#77966D] block mb-1">01. TRANS-DISCIPLINARY</span>
-                      <p className="text-xs text-[#1C1917]/80 leading-relaxed font-sans">Synthesize humanities with logic.</p>
+                      <span className="text-[10px] font-mono font-bold uppercase text-[#77966D] block mb-1">01. CONNECTED LEARNING</span>
+                      <p className="text-xs text-[#1C1917]/80 leading-relaxed font-sans">Subjects are linked together to help students see the bigger picture.</p>
                     </div>
                     <div className="p-4 bg-[#FAF7F2] rounded-2xl border border-[#E7E7E7]">
-                      <span className="text-[10px] font-mono font-bold uppercase text-[#77966D] block mb-1">02. CONCEPT INQUIRY</span>
-                      <p className="text-xs text-[#1C1917]/80 leading-relaxed font-sans">Understanding underlying principles deeply.</p>
+                      <span className="text-[10px] font-mono font-bold uppercase text-[#77966D] block mb-1">02. DEEP UNDERSTANDING</span>
+                      <p className="text-xs text-[#1C1917]/80 leading-relaxed font-sans">Students learn the "why" behind concepts, not just the answers.</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#E7E7E7]">
                   <Image 
-                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800"
+                    src="/images/fourday.png"
                     alt="Active standard classroom session"
                     fill
                     className="object-cover"
@@ -756,23 +772,23 @@ export default function MiraiSchoolWebsite() {
                   <span className="font-mono text-xs uppercase text-[#77966D] tracking-widest font-bold block mb-1">FRIDAY DEEP CYCLE</span>
                   <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#1C1917] mb-4">Applied Discovery & Innovation</h3>
                   <p className="text-sm text-[#1C1917]/85 leading-relaxed mb-6 font-sans">
-                    Guarded by expert entrepreneurs and active scientists. Scholars dedicate full focus to prototyping, troubleshooting algorithms, and working through Stanford-inspired design matrices to deliver mechanical or digital solutions.
+                  Guided by experienced entrepreneurs and industry experts, students build, test, and improve real-world projects. They learn by creating solutions, solving challenges, and turning ideas into reality.
                   </p>
                   <div className="grid grid-cols-2 gap-4 font-sans text-xs text-[#1C1917]/85">
                     <div className="p-4 bg-[#AA4A44]/5 border border-[#AA4A44]/10 rounded-2xl">
-                      <span className="font-mono font-extrabold uppercase text-[#AA4A44] text-[9px] block mb-1">01. APPLIED DISCOVERY</span>
-                      <span>Observe real machinery and structures in native corporate sites.</span>
+                      <span className="font-mono font-extrabold uppercase text-[#AA4A44] text-[9px] block mb-1">01. REAL-WORLD LEARNING</span>
+                      <span>Explore industries, technologies, and real-life applications.</span>
                     </div>
                     <div className="p-4 bg-[#AA4A44]/5 border border-[#AA4A44]/10 rounded-2xl">
                       <span className="font-mono font-extrabold uppercase text-[#AA4A44] text-[9px] block mb-1">02. MENTORSHIP & PROTOTYPES</span>
-                      <span>Create and review prototypes under elite mentorship.</span>
+                      <span>Create prototypes and develop solutions with mentor support.</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative aspect-video rounded-3xl overflow-hidden border border-[#E7E7E7]">
                   <Image 
-                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800"
+                    src="/images/friday.png"
                     alt="Maker Lab building action"
                     fill
                     className="object-cover"
@@ -831,44 +847,44 @@ export default function MiraiSchoolWebsite() {
       <section className="py-24 bg-[#FCFAF7] border-b border-[#E7E7E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3">FUTURE-PROOF OCCUPATIONS</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3">FUTURE-READY LEARNING</span>
             <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#AA4A44] leading-tight">
-              Translating IB Excellence Into Future Professions
+            Building Skills For The Future
             </h2>
             <p className="text-sm text-[#1C1917]/70 mt-3 leading-relaxed max-w-lg mx-auto">
-              How our bespoke delivery of the IB framework builds the fundamental capacities required for tomorrow&apos;s leading occupations.
+              Through the IB framework, students develop critical thinking, creativity, communication, research, and problem-solving skills that prepare them for success in higher education and future careers.
             </p>
             <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {[
-              {
-                role: "Prompt Engineer",
-                desc: "Instructing large language models via logical precision and systems understanding.",
-                ibSkill: "Conceptual inquiry & deep contextual logic"
-              },
-              {
-                role: "AI Ethicist",
-                desc: "Evaluating the moral consequences, bias, and parameters of automated systems.",
-                ibSkill: "Theory of Knowledge (TOK) & Ethical reasoning"
-              },
-              {
-                role: "Systems Thinker",
-                desc: "Synthesizing cross-disciplinary insights to manage complex engineering flows.",
-                ibSkill: "IB Transdisciplinary inquiries"
-              },
-              {
-                role: "Future Entrepreneur",
-                desc: "Taking ideas from concept to real-world solution under pressure.",
-                ibSkill: "IB CAS Action & Friday capstones"
-              },
-              {
-                role: "Innovation Leader",
-                desc: "Heading multi-disciplinary teams in solving global climate or technological challenges.",
-                ibSkill: "IB Extended Essay & research ethics"
-              }
-            ].map((prof, pIndex) => (
+  {
+    role: "Critical Thinker",
+    desc: "Students learn to question, analyse, and evaluate information from different perspectives.",
+    ibSkill: "Inquiry-Based Learning"
+  },
+  {
+    role: "Effective Communicator",
+    desc: "Students build confidence in expressing ideas, presenting solutions, and working with others.",
+    ibSkill: "Collaboration & Communication"
+  },
+  {
+    role: "Creative Problem Solver",
+    desc: "Students explore challenges, generate ideas, and develop practical solutions.",
+    ibSkill: "Design Thinking"
+  },
+  {
+    role: "Independent Researcher",
+    desc: "Students learn how to investigate topics, gather evidence, and draw meaningful conclusions.",
+    ibSkill: "Research & Inquiry"
+  },
+  {
+    role: "Future-Ready Learner",
+    desc: "Students develop adaptability, leadership, and lifelong learning habits for a changing world.",
+    ibSkill: "IB Learner Profile"
+  }
+].map((prof, pIndex) => (
               <div 
                 key={pIndex}
                 onClick={() => setActiveRoleIndex(pIndex)}
@@ -891,67 +907,209 @@ export default function MiraiSchoolWebsite() {
       </section>
 
       {/* SECTION 9 — EXPERIENTIAL LEARNING JOURNEY */}
-      <section className="py-24 bg-[#FAF7F2] border-b border-[#E7E7E7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3 font-bold">KIDS MILESTONE HORIZONS</span>
-            <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#1C1917] leading-tight">
-              Every Age. Every Stage.
-            </h2>
-            <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-4" />
-          </div>
+     <section className="py-24 bg-[#FAF7F2] border-b border-[#E7E7E7]">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {/* Section Heading */}
+    <div className="text-center max-w-3xl mx-auto mb-10">
+      <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3">
+        STUDENT LEARNING JOURNEY
+      </span>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">EARLY YEARS (EYP / PRE-K TO K)</span>
-                <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">Focus: Sensory Discovery</h3>
-                <p className="text-xs leading-relaxed text-[#1C1917]/75 mb-6 font-sans">
-                  Reggio-Emilia-inspired sensory play coupled with early IB inquiry milestones. Structured entirely around:
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["Play", "Explore", "Wonder", "Discover"].map((t) => (
-                    <span key={t} className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-mono font-bold text-[#AA4A44]">✓ {t}</span>
-                  ))}
-                </div>
-              </div>
-              <span className="text-[10px] font-mono uppercase text-gray-400 font-bold block">AUDITED BY ADVISORY COUNCELS</span>
+      <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#1C1917] leading-tight">
+        Every Age. Every Stage.
+      </h2>
+
+      <p className="text-[#1C1917]/70 mt-4 text-sm sm:text-base max-w-2xl mx-auto">
+        A carefully designed learning journey that nurtures curiosity,
+        confidence, creativity, and critical thinking at every stage.
+      </p>
+
+      <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-4" />
+    </div>
+
+    {/* Learning Journey Timeline */}
+    <div className="flex justify-center mb-14">
+      <div className="bg-white border border-[#E7E7E7] rounded-full px-6 md:px-10 py-4 shadow-sm">
+        <div className="flex items-center gap-3 md:gap-6">
+
+          <div className="text-center">
+            <div className="text-xl">🌱</div>
+            <div className="text-xs font-bold text-[#77966D] uppercase">
+              EYP
             </div>
-
-            <div className="p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">PRIMARY DEEP YEARS (PYP / GRADES 1-5)</span>
-                <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">Focus: Applied Inquiry</h3>
-                <p className="text-xs leading-relaxed text-[#1C1917]/75 mb-6 font-sans">
-                  Transitioning from basic discovery to collaborative, structured inquiries where math meets physical prototyping:
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["Inquiry", "Research", "Collaboration", "Communication"].map((t) => (
-                    <span key={t} className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-mono font-bold text-[#AA4A44]">✓ {t}</span>
-                  ))}
-                </div>
-              </div>
-              <span className="text-[10px] font-mono uppercase text-gray-400 font-bold block">1:8 TEACHER RATIO ASSURED</span>
-            </div>
-
-            <div className="p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">MIDDLE EDUCATION (MYP / GRADES 6-10)</span>
-                <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">Focus: System Design</h3>
-                <p className="text-xs leading-relaxed text-[#1C1917]/75 mb-6 font-sans">
-                  Deep transdisciplinary challenges, algorithmic logic, Friday corporate actions, and critical capstones:
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["Critical Thinking", "Future Pathways", "Design Challenges", "Global Perspectives"].map((t) => (
-                    <span key={t} className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-mono font-bold text-[#AA4A44]">✓ {t}</span>
-                  ))}
-                </div>
-              </div>
-              <span className="text-[10px] font-mono uppercase text-gray-400 font-bold block">PORTFOLIO TRACK CHANNELS</span>
+            <div className="text-[10px] text-[#1C1917]/60">
+              Discover
             </div>
           </div>
+
+          <div className="w-10 md:w-16 h-[2px] bg-[#AA4A44]" />
+
+          <div className="text-center">
+            <div className="text-xl">🚀</div>
+            <div className="text-xs font-bold text-[#AA4A44] uppercase">
+              PYP
+            </div>
+            <div className="text-[10px] text-[#1C1917]/60">
+              Explore
+            </div>
+          </div>
+
+          <div className="w-10 md:w-16 h-[2px] bg-[#AA4A44]" />
+
+          <div className="text-center">
+            <div className="text-xl">🔬</div>
+            <div className="text-xs font-bold text-[#1C1917] uppercase">
+              MYP
+            </div>
+            <div className="text-[10px] text-[#1C1917]/60">
+              Innovate
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      {/* EYP */}
+      <div className="group p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col">
+
+      <div className="relative h-56 overflow-hidden rounded-2xl mb-6">
+  
+  {/* Top Left Label */}
+  <div className="absolute top-4 left-4 z-10">
+    <span className="px-3 py-1 rounded-full bg-[#AA4A44] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg">
+      EARLY YEARS PROGRAMME (EYP)
+    </span>
+  </div>
+
+  <Image
+    src="/images/eyp.png"
+    alt="Early Years Programme"
+    fill
+    className="object-cover transition duration-700 group-hover:scale-105"
+  />
+
+  {/* Optional Dark Overlay for Better Visibility */}
+  <div className="absolute inset-0 bg-black/10" />
+</div>
+
+        <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">
+          Ages 2-5. Toddlers, Nursery to UKG
+        </span>
+
+        <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">
+          Discover
+        </h3>
+
+        <p className="text-sm leading-relaxed text-[#1C1917]/75 mb-6">
+          Through play, exploration, and inquiry, children develop confidence,
+          curiosity, and a love for learning.
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {["Play", "Explore", "Wonder", "Discover"].map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-bold text-[#AA4A44]"
+            >
+              ✓ {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* PYP */}
+      <div className="group p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col">
+
+        <div className="relative h-56 overflow-hidden rounded-2xl mb-6">
+            <div className="absolute top-4 left-4 z-10">
+    <span className="px-3 py-1 rounded-full bg-[#AA4A44] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg">
+      PRIMARY YEARS PROGRAMME (PYP)
+    </span>
+  </div>
+          <Image
+            src="/images/pyp.png"
+            alt="Primary Years Programme"
+            fill
+            className="object-cover transition duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">
+         Ages 6-10 - Grades I to V
+        </span>
+
+        <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">
+          Explore
+        </h3>
+
+        <p className="text-sm leading-relaxed text-[#1C1917]/75 mb-6">
+          Students investigate real-world ideas through inquiry, collaboration,
+          communication, and research.
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {["Inquiry", "Research", "Collaboration", "Communication"].map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-bold text-[#AA4A44]"
+            >
+              ✓ {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* MYP */}
+      <div className="group p-8 rounded-[2rem] bg-white border border-[#E7E7E7] hover:border-[#77966D] transition shadow-sm flex flex-col">
+
+        <div className="relative h-56 overflow-hidden rounded-2xl mb-6">
+            <div className="absolute top-4 left-4 z-10">
+    <span className="px-3 py-1 rounded-full bg-[#AA4A44] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg">
+       MIDDLE YEARS PROGRAMME (MYP)
+    </span>
+  </div>
+          <Image
+            src="/images/myp.png"
+            alt="Middle Years Programme"
+            fill
+            className="object-cover transition duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        <span className="font-mono text-[10px] text-[#77966D] font-extrabold uppercase block mb-2">
+         Ages 11-15 Grades VI to X
+
+        </span>
+
+        <h3 className="font-serif font-extrabold text-2xl text-[#1C1917] mb-4">
+          Innovate
+        </h3>
+
+        <p className="text-sm leading-relaxed text-[#1C1917]/75 mb-6">
+          Students apply critical thinking, design thinking, and global
+          perspectives to solve meaningful challenges.
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {["Critical Thinking", "Design Thinking", "Innovation", "Global Perspectives"].map((t) => (
+            <span
+              key={t}
+              className="px-3 py-1 bg-[#FAF7F2] border border-[#E7E7E7] rounded-full text-xs font-bold text-[#AA4A44]"
+            >
+              ✓ {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* SECTION 10 — CAMPUS EXPERIENCE */}
       <section id="campus-exp" className="py-24 bg-[#FCFAF7] border-b border-[#E7E7E7]">
