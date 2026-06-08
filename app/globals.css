@@ -1,8 +1,33 @@
 @import "tailwindcss";
+
+/* Global Fonts */
+
+:root {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Tailwind font utility overrides */
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Ticker Animation */
+
 @keyframes ticker {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -11,6 +36,7 @@
 .animate-ticker {
   animation: ticker 25s linear infinite;
 }
+
 .animate-ticker:hover {
   animation-play-state: paused;
 }
