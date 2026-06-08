@@ -1573,7 +1573,7 @@ const [phoneError, setPhoneError] = useState("");
                     </div>
                   ) : (
                     <div className="space-y-4 font-sans text-left">
-                      <h4 className="font-serif font-bold text-lg text-[#AA4A44] mb-2">Schedule Admissions Private Tour</h4>
+                      <h4 className="font-serif font-bold text-lg text-[#AA4A44] mb-2">Book a Campus Visit</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-[10px] font-mono uppercase text-[#77966D] mb-1 font-bold">Parent Name</label>
