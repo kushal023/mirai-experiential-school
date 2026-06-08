@@ -533,7 +533,7 @@ export const SCHOOL_DATA = {
       id: "faq_4",
       category: "Campus & Logistics",
       question: "Do you offer transportation for day scholars, and how is it monitored?",
-      answer: "Yes, we operate safe, high-end air-conditioned transport vans spanning Gurugram, Delhi, and Noida. Every single vehicle features live GPS vehicle tracking, multi-point interior CCTV feeds accessible to parents in real-time, Speed-governors limited strictly to 40 km/h, and a trained adult female attendant present on every route."
+      answer: "Yes, we operate safe, high-end air-conditioned transport vans spanning Ghaziabad, Delhi, and Noida. Every single vehicle features live GPS vehicle tracking, multi-point interior CCTV feeds accessible to parents in real-time, Speed-governors limited strictly to 40 km/h, and a trained adult female attendant present on every route."
     },
     {
       id: "faq_5",
@@ -667,7 +667,7 @@ export const SCHOOL_DATA = {
     { title: "Double-Encrypt Transport Tracking", text: "Encrypted student transport logs showing exact bus times, camera feeds, speed compliance logs, and boarding scans broadcast directly to parents." },
     { title: "Ozone Sealed Medical Zone", text: "Dedicated clinical infrastructure with an oxygen reserve stack, and direct Priority Green Corridors to nearby multi-specialty hospitals." },
     { title: "Triple-Surgical Background Audits", text: "Verified criminal history checks, and continuous psychological screening audits for all auxiliary transport, security, and dining team mates." },
-    { title: "Smart Emergency Alarms", text: "Direct, integrated emergency response alerts directly linked with Gurugram district services and municipal response nodes." },
+    { title: "Smart Emergency Alarms", text: "Direct, integrated emergency response alerts directly linked with Ghaziabad district services and municipal response nodes." },
     { title: "Military Grade Card Security", text: "Closed RFID badges showing real-time location. No entry or exit without verified check-in, keeping campus 100% safe." }
   ],
   admissions: [

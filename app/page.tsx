@@ -114,6 +114,8 @@ const TRUST_BLOCKS: TrustBlock[] =[
 ];
 
 export default function MiraiSchoolWebsite() {
+const [phoneError, setPhoneError] = useState("");
+
   // Navigation & UI States
   const [expandedTile, setExpandedTile] = useState<number | null>(null);
   const [activeDiffCard, setActiveDiffCard] = useState<number>(0);
@@ -355,17 +357,17 @@ export default function MiraiSchoolWebsite() {
 
       {/* RIGHT IMAGE */}
       <div className="lg:col-span-5 flex justify-center">
-        <div className="relative w-full max-w-[420px] lg:max-w-[460px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-[#E7E7E7] shadow-xl bg-white p-2 group">
+        <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[500px] aspect-square rounded-[2rem] overflow-hidden border border-[#E7E7E7] shadow-xl bg-white p-2 group">
 
           <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
 
             <Image
-              src="/images/mirai-campus-hero.webp"
+              src="/images/campus.webp"
               alt="Mirai Experiential School Campus"
               fill
               priority
               sizes="(max-width:768px) 100vw, 700px"
-              className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+              className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -1252,54 +1254,149 @@ export default function MiraiSchoolWebsite() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-mono text-xs uppercase tracking-widest text-[#77966D] font-bold block mb-3 font-bold">SCHOLASTIC ENROLLMENTS</span>
             <h2 className="font-serif font-black text-3xl sm:text-4xl md:text-5xl text-[#AA4A44] leading-tight">
-              The Flexibility Stack™
+              The Flexibility Stack
             </h2>
             <div className="w-16 h-[3px] bg-[#AA4A44] mx-auto mt-4" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="p-8 bg-white border border-[#E7E7E7] rounded-3xl relative shadow-sm">
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-extrabold block mb-3 bg-[#FAF7F2] py-1 px-3 rounded-full w-fit">OPTION A</span>
-              <h3 className="font-serif font-black text-2xl mb-2 text-[#1C1917]">Day School</h3>
-              <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
-                Standard rigorous academics integrated with morning transdisciplinary inquiries and global IB candidates programs.
-              </p>
-              <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
-                <span className="block uppercase text-gray-400 mb-1">IDEAL FOR</span>
-                <span className="font-semibold block text-[#AA4A44] mb-4">Local Gurugram NCR scholars desiring standard family evenings.</span>
-                <span className="block uppercase text-gray-400 mb-1">TIMING SLOTS</span>
-                <span className="font-semibold block">08:00 AM - 03:00 PM</span>
-              </div>
-            </div>
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <div className="p-8 bg-white border-2 border-[#AA4A44] rounded-3xl relative shadow-md">
-              <span className="font-mono text-[9px] uppercase tracking-wider text-white bg-[#AA4A44] font-extrabold block mb-3 py-1 px-3 rounded-full w-fit">OPTION B (MOST POPULAR)</span>
-              <h3 className="font-serif font-black text-2xl mb-2 text-[#AA4A44]">Day Boarding</h3>
-              <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
-                Enriched evening academic, design laboratory explorations, sports coached clinics, and nutritious dietitian snacks.
-              </p>
-              <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
-                <span className="block uppercase text-gray-400 mb-1">IDEAL FOR</span>
-                <span className="font-semibold block text-[#AA4A44] mb-4">Working parents desiring deep technical, computational guidance.</span>
-                <span className="block uppercase text-gray-400 mb-1">TIMING SLOTS</span>
-                <span className="font-semibold block">08:00 AM - 06:00 PM</span>
-              </div>
-            </div>
+  {/* DAY SCHOOL */}
+  <div className="bg-white border border-[#E7E7E7] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+    
+    <div className="relative aspect-square overflow-hidden">
+      <Image
+        src="/images/day-school.webp"
+        alt="Day School"
+        fill
+        className="object-cover transition duration-700 hover:scale-105"
+      />
+    </div>
 
-            <div className="p-8 bg-white border border-[#E7E7E7] rounded-3xl relative shadow-sm">
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-extrabold block mb-3 bg-[#FAF7F2] py-1 px-3 rounded-full w-fit">OPTION C</span>
-              <h3 className="font-serif font-black text-2xl mb-2 text-[#1C1917]">Full Boarding</h3>
-              <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
-                Complete resident life fostering high emotional intelligence, individual logic routines, and physical fitness.
-              </p>
-              <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
-                <span className="block uppercase text-gray-400 mb-1">IDEAL FOR</span>
-                <span className="font-semibold block text-[#AA4A44] mb-4">Outstation scholars seeking absolute moral validation and leadership training.</span>
-                <span className="block uppercase text-gray-400 mb-1">RESIDENCE PLAN</span>
-                <span className="font-semibold block">7 Days fully supervised resident suites</span>
-              </div>
-            </div>
-          </div>
+    <div className="p-8">
+      <span className="font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-extrabold block mb-3 bg-[#FAF7F2] py-1 px-3 rounded-full w-fit">
+        OPTION A
+      </span>
+
+      <h3 className="font-serif font-black text-2xl mb-2 text-[#1C1917]">
+        Day School
+      </h3>
+
+      <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
+        The foundation of the Mirai experience focused on inquiry-based learning, strong academics, sports, and co-curricular development.
+      </p>
+
+      <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
+        <span className="block uppercase text-gray-400 mb-1">
+          INCLUDES
+        </span>
+
+        <span className="font-semibold block text-[#AA4A44] mb-4">
+          Core academics, sports activities, breakfast & lunch.
+        </span>
+
+        <span className="block uppercase text-gray-400 mb-1">
+          TIMING
+        </span>
+
+        <span className="font-semibold block">
+          08:00 AM – 02:00 PM
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {/* DAY BOARDING */}
+  <div className="bg-white border-2 border-[#AA4A44] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+
+    <div className="relative aspect-square overflow-hidden">
+      <Image
+        src="/images/day-boarding.webp"
+        alt="Day Boarding"
+        fill
+        className="object-cover transition duration-700 hover:scale-105"
+      />
+    </div>
+
+    <div className="p-8">
+      <span className="font-mono text-[9px] uppercase tracking-wider text-white bg-[#AA4A44] font-extrabold block mb-3 py-1 px-3 rounded-full w-fit">
+        MOST POPULAR
+      </span>
+
+      <h3 className="font-serif font-black text-2xl mb-2 text-[#AA4A44]">
+        Day Boarding
+      </h3>
+
+      <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
+        Designed for deeper academic support with supervised activities, homework guidance, and nutritious meals throughout the day.
+      </p>
+
+      <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
+        <span className="block uppercase text-gray-400 mb-1">
+          IDEAL FOR
+        </span>
+
+        <span className="font-semibold block text-[#AA4A44] mb-4">
+          Working parents seeking extended learning and care.
+        </span>
+
+        <span className="block uppercase text-gray-400 mb-1">
+          TIMING
+        </span>
+
+        <span className="font-semibold block">
+          08:00 AM – 05:00 PM
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {/* FULL BOARDING */}
+  <div className="bg-white border border-[#E7E7E7] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+
+    <div className="relative aspect-square overflow-hidden">
+      <Image
+        src="/images/full-boarding1.webp"
+        alt="Full Boarding"
+        fill
+        className="object-cover transition duration-700 hover:scale-105"
+      />
+    </div>
+
+    <div className="p-8">
+      <span className="font-mono text-[9px] uppercase tracking-wider text-[#77966D] font-extrabold block mb-3 bg-[#FAF7F2] py-1 px-3 rounded-full w-fit">
+        OPTION C
+      </span>
+
+      <h3 className="font-serif font-black text-2xl mb-2 text-[#1C1917]">
+        Full Boarding
+      </h3>
+
+      <p className="text-xs text-[#1C1917]/75 font-sans leading-relaxed mb-6">
+        A complete residential experience with structured academics, life skills, personal growth, and 24-hour care and supervision.
+      </p>
+
+      <div className="pt-4 border-t border-[#E7E7E7] text-xs font-mono">
+        <span className="block uppercase text-gray-400 mb-1">
+          INCLUDES
+        </span>
+
+        <span className="font-semibold block text-[#AA4A44] mb-4">
+          Residence life, weekend enrichment, life skills & academic support.
+        </span>
+
+        <span className="block uppercase text-gray-400 mb-1">
+          RESIDENTIAL
+        </span>
+
+        <span className="font-semibold block">
+          24×7 Campus Residence
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div>
         </div>
       </section>
 
@@ -1489,17 +1586,63 @@ export default function MiraiSchoolWebsite() {
                             className="w-full p-2.5 rounded border border-[#E7E7E7] bg-white text-xs outline-none focus:ring-1 focus:ring-[#AA4A44]"
                           />
                         </div>
-                        <div>
-                          <label className="block text-[10px] font-mono uppercase text-[#77966D] mb-1 font-bold">Phone Number</label>
-                          <input
-                            type="tel"
-                            required
-                            placeholder="+91 XXXXX XXXXX"
-                            value={tourData.phone}
-                            onChange={(e) => setTourData({...tourData, phone: e.target.value})}
-                            className="w-full p-2.5 rounded border border-[#E7E7E7] bg-white text-xs outline-none focus:ring-1 focus:ring-[#AA4A44]"
-                          />
-                        </div>
+<div>
+  <label className="block text-[10px] font-mono uppercase text-[#77966D] mb-1 font-bold">
+    Phone Number
+  </label>
+
+  <div className="flex">
+    <span className="flex items-center px-3 border border-r-0 border-[#E7E7E7] bg-[#FAF7F2] rounded-l text-xs font-semibold">
+      +91
+    </span>
+
+    <input
+      type="tel"
+      required
+      maxLength={10}
+      inputMode="numeric"
+      placeholder="9876543210"
+      value={tourData.phone}
+      onChange={(e) => {
+        const rawValue = e.target.value;
+
+        if (/[^0-9]/.test(rawValue)) {
+          setPhoneError("Only digits (0-9) are allowed.");
+          return;
+        }
+
+        setPhoneError("");
+
+        if (rawValue.length <= 10) {
+          setTourData({
+            ...tourData,
+            phone: rawValue,
+          });
+        }
+      }}
+      className={`w-full p-2.5 rounded-r border bg-white text-xs outline-none focus:ring-1 ${
+        phoneError
+          ? "border-red-500 focus:ring-red-500"
+          : "border-[#E7E7E7] focus:ring-[#AA4A44]"
+      }`}
+    />
+  </div>
+
+  {phoneError && (
+    <p className="mt-1 text-[11px] text-red-500">
+      {phoneError}
+    </p>
+  )}
+
+  {!phoneError &&
+    tourData.phone &&
+    tourData.phone.length > 0 &&
+    tourData.phone.length < 10 && (
+      <p className="mt-1 text-[11px] text-red-500">
+        Please enter a valid 10-digit mobile number.
+      </p>
+    )}
+</div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1527,8 +1670,7 @@ export default function MiraiSchoolWebsite() {
                           </select>
                         </div>
                       </div>
-
-                 <div>
+<div>
   <label className="block text-[10px] font-mono uppercase text-[#77966D] mb-1 font-bold">
     Target Private Tour Saturday
   </label>
